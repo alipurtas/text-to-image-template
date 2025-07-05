@@ -1,7 +1,10 @@
 export default {
   async fetch(request, env) {
+    const url = new URL(request.url);
+    const prompt = url.searchParams.get("prompt") || "a cute girl in tokyo";
+
     const inputs = {
-      prompt: "a cute girl in tokio",
+      prompt: prompt,
     };
 
     const response = await env.AI.run(
